@@ -1,0 +1,14 @@
+*.synctex.gz
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.out
+*.idx
+*.log
+*.lof
+*.lot
+*.toc
+*.RData
+.Rhistory
+*~

@@ -1,0 +1,209 @@
+% since 1995    
+\urldef\pubmedquery\url{https://www.ncbi.nlm.nih.gov/pubmed?term=(%221995%22%5BDate%20-%20Publication%5D%20%3A%20%222017%22%5BDate%20-%20Publication%5D)}
+
+% since 1900
+\urldef\pubmedquery\url{https://www.ncbi.nlm.nih.gov/pubmed/?term=%221900%22%5BPDAT%5D%20%3A%20%222017%22%5BPDAT%5D&cmd=DetailsSearch}
+
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{pbox}
+\usepackage{bm}
+\usepackage{latexsym}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{pdflscape}
+\usepackage{fancyref}
+
+% for tikz compatibility
+%\noautomath
+\usepackage{varwidth}
+\usepackage{tikz}
+\usetikzlibrary{automata, calc, backgrounds, er, trees, fit, positioning, arrows, chains, shapes.geometric, decorations.pathreplacing, decorations.pathmorphing,shapes, matrix, shapes.symbols}
+\usepackage{tikz-qtree}
+\usepackage{tikz-dependency}
+%\usepackage{gb4e}
+\usepackage{enumitem}
+%\usepackage{subcaption}
+%\usepackage[lined]{algorithm2e}
+
+%\bibliographystyle{plainnat}
+% \usepackage[american]{babel}
+% \usepackage[
+%         backend=biber,
+%         style=authoryear,
+%         sorting=nyt,
+%         natbib=true,
+%         doi=true,
+%         arxiv=abs,
+%         url=true
+% ]{biblatex}
+
+% \addbibresource{dissertation.bib}
+% \DefineBibliographyStrings{american}{phdthesis = {PhD dissertation}}
+% \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
+
+
+\usepackage{placeins}
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{proceduredesc}{%
+    linecolor=black,
+    outerlinewidth=0.5pt,
+    roundcorner=5pt,
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    innerrightmargin=15pt,
+    innerleftmargin=15pt,
+    backgroundcolor=gray!10!white}
+
+
+\usepackage{epigraph}
+\renewcommand{\epigraphsize}{\small}
+
+\setlength{\epigraphwidth}{1.0\textwidth}
+
+\renewcommand{\textflush}{flushright} \renewcommand{\sourceflush}{flushright}
+
+\let\originalepigraph\epigraph 
+\renewcommand\epigraph[2]{\originalepigraph{\textit{#1}}{\textsc{#2}}}
+
+\newcommand{\reach}{Reach}
+\newcommand{\odin}{Odin}
+\newcommand{\grayrule}{}
+
+% define extractor language
+\lstdefinelanguage{yaml}{% alsoletter={@=><&?.*+^,_/|[]},
+	morestring=[b]", keywords={true, false, null, name, action, example,
+		priority, type, label, unit, pattern}, keywordstyle=\textbf,
+	ndkeywords={trigger, ?<trigger>, theme, theme?, ?<theme>, @theme,
+		cause, cause?, ?<cause>, @cause, site, site?, @site, product,
+		product?, @site, controller, controlled, @controlled,
+		?<witness>, @witness,
+		?<entity>, @entity, entity, word, lemma, tag,
+		?<location>, @location, location,
+		?<robber>, @robber, robber,
+		@property, property,
+		agent, vehicle,
+		obstacle,
+		title,
+		@person, person,
+		@num,
+		dancer, partner,
+		city},
+	ndkeywordstyle=\color{arsenic}\bfseries, comment=[l]{\#},
+	commentstyle=\color{coolgrey}\textit, stringstyle=\ttfamily,
+	sensitive=true }
+
+\lstdefinestyle{yaml-style}{%
+	language=yaml,
+	basicstyle=\ttfamily\footnotesize,
+	%basewidth={0.5em,0.5em},
+	xleftmargin=9pt,
+	xrightmargin=-8pt,
+	%xleftmargin=20pt,
+	%xrightmargin=-8pt,
+	framexleftmargin=16pt,
+	framexrightmargin=-10pt,
+	%framextopmargin=2pt,
+	%framexbottommargin=0pt,
+	%frame=trBL,
+	%frameround=fttt,
+	frame=tb,
+	captionpos=t,
+	backgroundcolor=\color{anti-flashwhite},
+	rulecolor=\color{black},
+	extendedchars=true,
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=8pt,
+	stepnumber=1,
+	tabsize=2,
+	breaklines=true,
+	showtabs=false,
+	escapeinside={(*@}{@*)}
+}
+
+\lstnewenvironment{yaml}[1]{%
+	\lstset{style=yaml-style}}{%
+	\captionof{lstlisting}{#1}
+}
+
+%\renewcommand{\lstlistingname}{Rule}% Listing -> Example
+\renewcommand{\lstlistingname}{\bfseries Rule}
+\makeatletter
+\def\fnum@lstlisting{%
+  \lstlistingname
+  \ifx\lst@@caption\@empty\else~\thelstlisting\normalfont\fi}%
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% custom figures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{float}
+\newfloat{example}{thp}{lop}
+\floatname{example}{Example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define colors
+\definecolor{lightgray}{gray}{0.7}
+\definecolor{anti-flashwhite}{rgb}{0.95, 0.95, 0.96}
+\definecolor{coolgrey}{rgb}{0.55, 0.57, 0.67}
+\definecolor{arsenic}{rgb}{0.23, 0.27, 0.29}
+\definecolor{purpleish}{cmyk}{0.75,0.75,0,0}
+\definecolor{light-gray}{gray}{0.9}
+\definecolor{light-red}{rgb}{1,.8,.8}
+\definecolor{pinegreen}{rgb}{0.0, 0.47, 0.44}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+%\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\definecolor{tbl}{rgb}{.85,.95,.85}
+
+% Render DOIs as URLs
+\renewcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\textsc{doi}: #1}}
+ 
+% fix to avoid weird interaction with Tufte
+\usepackage{gb4e}
+\noautomath
+%\usepackage{linguex}
+
+% Add the following code AFTER the gb4e package has been loaded.
+% This will restore the Tufte-LaTeX definition of footnotes (as sidenotes)
+% but adds in the two lines of code used by the gb4e package.
+\makeatletter
+\renewcommand\@footnotetext[2][0pt]{%
+  \@noftnotefalse\setcounter{fnx}{0}% added by gb4e
+  \marginpar{%
+    \hbox{}\vspace*{#1}%
+    \def\baselinestretch {\setspace@singlespace}%
+    \reset@font\footnotesize%
+    \@tufte@margin@par% use parindent and parskip settings for marginal text
+    \vspace*{-1\baselineskip}\noindent%
+    \protected@edef\@currentlabel{%
+       \csname p@footnote\endcsname\@thefnmark%
+    }%
+    \color@begingroup%
+       \@makefntext{%
+         \ignorespaces#2%
+       }%
+    \color@endgroup%
+  }%
+  \@noftnotetrue% added by g4be
+}%
+\makeatother
+% End of Tufte-LaTeX-related code.
